@@ -20,10 +20,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("request: {}", request);
         log.info("response: {}", response);
+        // todo：前端从header中传递token，暂时注释掉
         //String token = request.getHeader("token");
         String token = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ODgiLCJzdWIiOiLlsI_nmb0iLCJpYXQiOjE2NTAwMTUyNjgsImV4cCI6MTY1MDIxMTIyOH0.3fbTI8HPh1wHNALHG-4NLcAhLK_UZtroV1Sllwa9tfw";
         try {
-            Claims claims = Jwts.parser().setSigningKey( "CheLinLai" ).parseClaimsJws( token ).getBody();
+            // Claims claims = Jwts.parser().setSigningKey( "CheLinLai" ).parseClaimsJws( token ).getBody();
             LoginUser loginUser = new LoginUser();
             loginUser.setEmail("13890697926@163.com");
             loginUser.setName("车林来");
@@ -33,7 +34,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             log.error("token parse fail: {}", e);
             throw new IllegalArgumentException("请重新登录");
         }
-
         return true;
     }
 

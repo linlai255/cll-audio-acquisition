@@ -36,3 +36,12 @@ spring:
     port: 6379 #redis服务器连接端口
     password: #redis服务器连接密码，默认为null
     timeout: 5000 #redis连接超时时间
+
+#自定义配置
+
+app:
+  minio:
+    endpoint: http://101.43.126.207:19000
+    accessKey: CheLinLai
+    secretKey: CheLinLai255599
+    bucketName: graduation-design
